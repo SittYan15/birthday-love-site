@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 type Card = { id: number; value: string }
 const symbols = ['❤️', '🌷', '🐻', '🍓', '🎂', '✨']
@@ -14,15 +15,18 @@ export default function MemoryGame() {
   const [flipped, setFlipped] = useState<number[]>([])
   const [matched, setMatched] = useState<string[]>([])
   const [moves, setMoves] = useState(0)
+  const [showWinPopup, setShowWinPopup] = useState(false)
   const locked = flipped.length === 2
   const won = matched.length === symbols.length
   const sparkle = useMemo(() => Array.from({ length: 12 }, (_, i) => i), [])
 
   useEffect(() => {
     if (flipped.length !== 2) return
+
     const [first, second] = flipped
     const firstValue = deck.find((card) => card.id === first)?.value
     const secondValue = deck.find((card) => card.id === second)?.value
+
     if (firstValue && firstValue === secondValue) {
       setMatched((prev) => [...prev, firstValue])
       setFlipped([])
@@ -32,8 +36,30 @@ export default function MemoryGame() {
     }
   }, [flipped, deck])
 
+  useEffect(() => {
+    if (won) setShowWinPopup(true)
+  }, [won])
+
+  useEffect(() => {
+    if (!showWinPopup) return
+
+    const oldOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setShowWinPopup(false)
+    }
+
+    window.addEventListener('keydown', closeOnEscape)
+    return () => {
+      window.removeEventListener('keydown', closeOnEscape)
+      document.body.style.overflow = oldOverflow
+    }
+  }, [showWinPopup])
+
   const choose = (card: Card) => {
     if (locked || flipped.includes(card.id) || matched.includes(card.value)) return
+
     setFlipped((prev) => [...prev, card.id])
     if (flipped.length === 0) setMoves((m) => m + 1)
   }
@@ -43,38 +69,105 @@ export default function MemoryGame() {
     setFlipped([])
     setMatched([])
     setMoves(0)
+    setShowWinPopup(false)
   }
 
-  return (
-    <section className="section game-section" id="game">
-      <div className="section-heading">
-        <span className="eyebrow">A tiny game for you</span>
-        <h2>Match our cute little things</h2>
-        <p>Find all six pairs. Your prize is extremely exclusive.</p>
-      </div>
-      <div className="game-shell">
-        <div className="game-topbar"><span>Moves: <b>{moves}</b></span><button onClick={reset}>Shuffle ↻</button></div>
-        <div className="memory-grid">
-          {deck.map((card) => {
-            const visible = flipped.includes(card.id) || matched.includes(card.value)
-            return (
-              <button className={`memory-card ${visible ? 'is-flipped' : ''} ${matched.includes(card.value) ? 'matched' : ''}`} key={card.id} onClick={() => choose(card)}>
-                <span className="card-back">?</span>
-                <span className="card-front">{card.value}</span>
+  const winnerPopup = showWinPopup
+    ? createPortal(
+        <div
+          className="win-popup-overlay"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setShowWinPopup(false)
+          }}
+        >
+          <div
+            className="win-popup-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="memory-win-title"
+          >
+            <div className="win-sparkles" aria-hidden="true">
+              {sparkle.map((i) => <span key={i}>✦</span>)}
+            </div>
+
+            <button
+              className="win-popup-close"
+              type="button"
+              aria-label="Close winner popup"
+              onClick={() => setShowWinPopup(false)}
+            >
+              ×
+            </button>
+
+            <span className="win-popup-emoji" aria-hidden="true">🎉</span>
+            <span className="eyebrow">You found every pair!</span>
+            <h3 id="memory-win-title">You won, my love! ❤️</h3>
+            <p className="win-popup-score">
+              You completed the game in <b>{moves} moves</b>.
+            </p>
+
+            <div className="win-popup-prize">
+              <span>🎁 Your prize</span>
+              <strong>Unlimited hugs & kisses from me</strong>
+              <small>Non-refundable. No expiration date. Valid forever. 💕</small>
+            </div>
+
+            <div className="win-popup-actions">
+              <button className="primary-button" type="button" onClick={reset}>
+                Play again ↻
               </button>
-            )
-          })}
-        </div>
-        {won && (
-          <div className="win-card">
-            <div className="win-sparkles" aria-hidden="true">{sparkle.map((i) => <span key={i}>✦</span>)}</div>
-            <span className="win-emoji">🎉</span>
-            <h3>You won!</h3>
-            <p><b>Prize:</b> Unlimited hugs from me.</p>
-            <small>Terms & conditions: cannot be refunded. Valid forever. ❤️</small>
+              <button
+                className="secondary-button"
+                type="button"
+                onClick={() => setShowWinPopup(false)}
+              >
+                Claim my prize ❤️
+              </button>
+            </div>
           </div>
-        )}
-      </div>
-    </section>
+        </div>,
+        document.body,
+      )
+    : null
+
+  return (
+    <>
+      <section className="section game-section" id="game">
+        <div className="section-heading">
+          <span className="eyebrow">A tiny game for you</span>
+          <h2>Match our cute little things</h2>
+          <p>Find all six pairs. Your prize is extremely exclusive.</p>
+        </div>
+
+        <div className="game-shell">
+          <div className="game-topbar">
+            <span>Moves: <b>{moves}</b></span>
+            <button onClick={reset}>Shuffle ↻</button>
+          </div>
+
+          <div className="memory-grid">
+            {deck.map((card) => {
+              const visible = flipped.includes(card.id) || matched.includes(card.value)
+              const isMatched = matched.includes(card.value)
+
+              return (
+                <button
+                  className={`memory-card ${visible ? 'is-flipped' : ''} ${isMatched ? 'matched' : ''}`}
+                  key={card.id}
+                  onClick={() => choose(card)}
+                  aria-label={visible ? `Card ${card.value}` : 'Hidden memory card'}
+                >
+                  <span className="card-back">?</span>
+                  <span className="card-front">{card.value}</span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {winnerPopup}
+    </>
   )
 }

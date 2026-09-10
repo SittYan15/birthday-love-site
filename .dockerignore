@@ -1,5 +1,9 @@
-node_modules
-dist
 .git
 .DS_Store
 npm-debug.log
+
+node_modules/
+dist/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts

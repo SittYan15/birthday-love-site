@@ -9,6 +9,9 @@ export default function FinalLetter() {
         <span className="eyebrow">And finally...</span>
         <h2>Happy Birthday, my love. ❤️</h2>
         <p>
+          ဒီနှစ်မှာလဲ အစစအရာရာ အကုန်အဆင်ပြေပါစေလို့ ကိုကိုဆုတောင်းပေးပါတယ်နော်။
+          ကိုကိုအကြီးကြီးချစ်တယ်ဆိုတာကို ကိုကိုသိပြီးသားပါပဲ။ အခုလို အချစ်နဲ့ ပြည့်နေတဲ့နေ့မှာ ကိုကိုအတွက် အရမ်းအရမ်းပျော်ရွှင်စရာကောင်းတဲ့နေ့ဖြစ်ပါစေလို့ ဆုတောင်းပေးပါတယ်။
+          အာပူတူးလေး
           I hope this year brings you the happiness you deserve. Thank you for being part of my life,
           for listening to me, laughing with me, supporting me, and creating all these memories with me.
         </p>

@@ -206,3 +206,143 @@ footer { text-align: center; padding: 0 20px 40px; color: #9d858d; font-size: .8
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
+
+
+/* Memory game winner popup - rendered through a React portal */
+.win-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(57, 36, 43, .68);
+  overflow-y: auto;
+}
+
+.win-popup-card {
+  position: relative;
+  z-index: 2147483001;
+  display: block;
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding: clamp(34px, 6vw, 52px) clamp(22px, 5vw, 42px) clamp(26px, 5vw, 38px);
+  text-align: center;
+  color: var(--ink);
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  border: 1px solid rgba(217, 99, 124, .18);
+  border-radius: 32px;
+  background: linear-gradient(145deg, #ffffff, #fff4f6 58%, #fff9f0);
+  box-shadow: 0 35px 90px rgba(0, 0, 0, .36);
+  isolation: isolate;
+}
+
+.win-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #5d4650;
+  box-shadow: 0 5px 18px rgba(70, 45, 54, .12);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.win-popup-emoji {
+  display: block;
+  margin-bottom: 8px;
+  font-size: clamp(3rem, 10vw, 4.8rem);
+}
+
+.win-popup-card h3 {
+  margin: 8px 0 10px;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 1.05;
+  color: var(--rose-dark);
+}
+
+.win-popup-score {
+  margin: 0 auto 22px;
+  color: var(--muted);
+}
+
+.win-popup-prize {
+  display: grid;
+  gap: 7px;
+  padding: 20px;
+  border: 1px dashed rgba(217, 99, 124, .35);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .86);
+}
+
+.win-popup-prize span {
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.win-popup-prize strong {
+  font-family: Georgia, serif;
+  font-size: 1.18rem;
+  color: #684651;
+}
+
+.win-popup-prize small {
+  color: var(--muted);
+}
+
+.win-popup-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.win-popup-actions button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 18px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.win-popup-actions .secondary-button {
+  background: var(--pink-soft);
+  color: var(--rose-dark);
+}
+
+.win-popup-card .win-sparkles span:nth-child(5) { left: 33%; top: 8%; }
+.win-popup-card .win-sparkles span:nth-child(6) { right: 34%; top: 11%; }
+.win-popup-card .win-sparkles span:nth-child(7) { left: 7%; top: 52%; }
+.win-popup-card .win-sparkles span:nth-child(8) { right: 7%; top: 54%; }
+.win-popup-card .win-sparkles span:nth-child(9) { left: 28%; bottom: 7%; }
+.win-popup-card .win-sparkles span:nth-child(10) { right: 29%; bottom: 7%; }
+.win-popup-card .win-sparkles span:nth-child(11) { left: 48%; top: 4%; }
+.win-popup-card .win-sparkles span:nth-child(12) { right: 48%; bottom: 3%; }
+
+@media (max-width: 520px) {
+  .win-popup-overlay { padding: 12px; }
+  .win-popup-card {
+    width: 100%;
+    max-height: calc(100vh - 24px);
+    border-radius: 26px;
+  }
+  .win-popup-actions { flex-direction: column; }
+  .win-popup-actions button { width: 100%; }
+}
