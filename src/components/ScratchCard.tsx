@@ -2,9 +2,9 @@ import { PointerEvent, useEffect, useRef, useState } from 'react'
 
 const prize = {
   emoji: '🎁',
-  title: 'Surprise unlocked!',
-  text: 'One special date of your choice + unlimited hugs from ကိုကို ❤️',
-  note: 'No expiration date. Redeem whenever you want. 😌',
+  title: 'အထူးဆုကြီး ပေါက်ပါပြီ!',
+  text: 'unlimited kisses 😘 + unlimited hugs 🤗 from ကိုကို ❤️',
+  note: 'ပြန်လဲလို့မရ၊ ကုန်ဆုံးရက်မရှိ 😌',
 }
 
 export default function ScratchCard() {
@@ -161,16 +161,16 @@ export default function ScratchCard() {
       `}</style>
 
       <div className="scratch-heading">
-        <span className="eyebrow">A tiny present for you</span>
-        <h2>Scratch to reveal your surprise 🎁</h2>
-        <p>Use your finger on mobile or your mouse on PC. There is something hiding underneath.</p>
+        <span className="eyebrow">ကို့ကလေးလေးအတွတ် လက်ဆောင်</span>
+        <h3>ခြစ်ပြီးတော့ ကံစမ်းမဲဖောက်ကြည့် နော် 🎁</h3>
+        <p>တစ်ခုခုထူးဆန်းတာလေး ဖွက်ထားတယ်။</p>
       </div>
 
       <div className="scratch-wrap">
         <div className="scratch-prize">
           <div className="scratch-prize-inner">
             <span className="gift">{prize.emoji}</span>
-            <h3>{prize.title}</h3>
+            <h4 style={{color:'#d46b82'}}>{prize.title}</h4>
             <p>{prize.text}</p>
             <small>{prize.note}</small>
           </div>

@@ -6,10 +6,8 @@ const symbols = ['❤️', '🌷', '🐻', '🍓', '🎂', '✨']
 
 const prizes = [
   'Unlimited hugs & kisses from me 💕',
-  'One special date of your choice 🍽️❤️',
-  'Your favorite meal or snack — on me 🍓',
-  'One movie night where you choose everything 🎬✨',
-  'One surprise gift from ကိုကို 🎁❤️',
+  'အထူးအခွင့်အရေး ခိုင်းချင်တာခိုင်း 🍽️❤️',
+  'ကဲကဲ screenshot ရိုက်ပြီး ကို့စီ မုန့်ဖိုးလာထုတ်ပါ 💰',
 ]
 
 function pickRandomPrize() {
@@ -119,15 +117,11 @@ export default function MemoryGame() {
 
             <span className="win-popup-emoji" aria-hidden="true">🎉</span>
             <span className="eyebrow">You found every pair!</span>
-            <h3 id="memory-win-title">You won, my love! ❤️</h3>
-            <p className="win-popup-score">
-              You completed the game in <b>{moves} moves</b>.
-            </p>
+            <h4 id="memory-win-title">နိုင်သွားပါပြီ! ❤️</h4>
 
             <div className="win-popup-prize">
-              <span>🎁 Your prize</span>
+              <span>🎁</span>
               <strong>{selectedPrize ?? 'A surprise from me ❤️'}</strong>
-              <small>Randomly chosen from 5 special prizes ✨</small>
             </div>
 
             <div className="win-popup-actions">
