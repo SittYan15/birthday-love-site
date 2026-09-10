@@ -5,8 +5,10 @@ import LoveReasons from './components/LoveReasons'
 import Timeline from './components/Timeline'
 import Gallery from './components/Gallery'
 import Letters from './components/Letters'
+import ScratchCard from './components/ScratchCard'
 import MemoryGame from './components/MemoryGame'
 import FinalLetter from './components/FinalLetter'
+import WishFinale from './components/WishFinale'
 
 export default function App() {
   const [opened, setOpened] = useState(false)
@@ -36,8 +38,10 @@ export default function App() {
         <Timeline />
         <Gallery />
         <Letters />
+        <ScratchCard />
         <MemoryGame />
         <FinalLetter />
+        <WishFinale />
         <footer>ကို့ကလေးလေးအတွတ် အချစ်များဖြင့် ဖန်တီးထားသည်။ ❤️</footer>
       </main>
     </>

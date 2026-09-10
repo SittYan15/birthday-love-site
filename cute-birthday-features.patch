@@ -1,0 +1,442 @@
+diff --git a/src/App.tsx b/src/App.tsx
+index 9e5e16a..b12bc74 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -5,8 +5,11 @@ import LoveReasons from './components/LoveReasons'
+ import Timeline from './components/Timeline'
+ import Gallery from './components/Gallery'
+ import Letters from './components/Letters'
++import ScratchCard from './components/ScratchCard'
+ import MemoryGame from './components/MemoryGame'
+ import FinalLetter from './components/FinalLetter'
++import WishFinale from './components/WishFinale'
++import CharacterGuide from './components/CharacterGuide'
+ 
+ export default function App() {
+   const [opened, setOpened] = useState(false)
+@@ -36,10 +39,13 @@ export default function App() {
+         <Timeline />
+         <Gallery />
+         <Letters />
++        <ScratchCard />
+         <MemoryGame />
+         <FinalLetter />
++        <WishFinale />
+         <footer>ကို့ကလေးလေးအတွတ် အချစ်များဖြင့် ဖန်တီးထားသည်။ ❤️</footer>
+       </main>
++      {opened && <CharacterGuide />}
+     </>
+   )
+ }
+diff --git a/src/components/CharacterGuide.tsx b/src/components/CharacterGuide.tsx
+new file mode 100644
+index 0000000..5f74bf1
+--- /dev/null
++++ b/src/components/CharacterGuide.tsx
+@@ -0,0 +1,87 @@
++import { useEffect, useMemo, useState } from 'react'
++
++type GuideMessage = { id: string; text: string }
++
++const guideMessages: GuideMessage[] = [
++  { id: 'home', text: 'ဟိုင်း ကလေးလေး 👋 ကိုကို့ surprise ထဲ ရောက်လာပြီနော် 💕' },
++  { id: 'reasons', text: 'ဒီကတ်လေးတွေ တစ်ခုချင်းနှိပ်ကြည့်နော် 💗' },
++  { id: 'timeline', text: 'အမှတ်တရလေးတွေ ပြန်ကြည့်ရအောင် 📖' },
++  { id: 'gallery', text: 'ပုံတွေနဲ့ video တွေကို နှိပ်ကြည့်လို့ရတယ်နော် 📸' },
++  { id: 'letters', text: 'စာအိတ်လေးတွေ ဖွင့်ကြည့်နော်… တစ်ခုချင်းစီမှာ စာရှိတယ် 💌' },
++  { id: 'scratch', text: 'ဟေး! ဒီကတ်ကို လက်နဲ့ခြစ်ကြည့် 🎁✨' },
++  { id: 'game', text: 'Pair အားလုံး ရှာနိုင်မလား 👀 Winner အတွက် prize ရှိတယ်နော်!' },
++  { id: 'final', text: 'အဆုံးနားရောက်ပြီ… ဒါပေမဲ့ surprise မကုန်သေးဘူးနော် ❤️' },
++  { id: 'wish', text: 'နောက်ဆုံး ဆုတောင်းတစ်ခုတောင်းပြီး candle လေးပိတ်နော် 🎂✨' },
++]
++
++export default function CharacterGuide() {
++  const availableMessages = useMemo(
++    () => guideMessages.filter((item) => document.getElementById(item.id)),
++    [],
++  )
++  const [active, setActive] = useState(availableMessages[0]?.id ?? 'home')
++  const [bubbleOpen, setBubbleOpen] = useState(true)
++
++  useEffect(() => {
++    const sections = guideMessages
++      .map((item) => document.getElementById(item.id))
++      .filter((section): section is HTMLElement => Boolean(section))
++
++    if (!sections.length) return
++
++    const observer = new IntersectionObserver(
++      (entries) => {
++        const visible = entries
++          .filter((entry) => entry.isIntersecting)
++          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
++
++        if (visible?.target.id) setActive(visible.target.id)
++      },
++      { rootMargin: '-30% 0px -45% 0px', threshold: [0, 0.15, 0.35, 0.6] },
++    )
++
++    sections.forEach((section) => observer.observe(section))
++    return () => observer.disconnect()
++  }, [])
++
++  useEffect(() => {
++    setBubbleOpen(true)
++    const timer = window.setTimeout(() => setBubbleOpen(false), 5500)
++    return () => window.clearTimeout(timer)
++  }, [active])
++
++  const current = guideMessages.find((item) => item.id === active) ?? guideMessages[0]
++
++  return (
++    <div className="cute-guide-root" aria-live="polite">
++      <style>{`
++        .cute-guide-root{position:fixed;right:18px;bottom:18px;z-index:2147482000;display:flex;align-items:flex-end;gap:10px;pointer-events:none}
++        .cute-guide-bubble{position:relative;max-width:min(285px,calc(100vw - 105px));padding:13px 15px;border-radius:18px 18px 4px 18px;background:#fff;color:#5f4650;box-shadow:0 16px 45px rgba(76,44,55,.18);border:1px solid rgba(217,99,124,.17);font-size:.88rem;line-height:1.55;opacity:0;transform:translateY(8px) scale(.96);transition:.22s ease;pointer-events:auto}
++        .cute-guide-bubble.show{opacity:1;transform:none}
++        .cute-guide-bubble::after{content:'';position:absolute;right:-8px;bottom:8px;border-left:10px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent}
++        .cute-guide-mascot{position:relative;width:66px;height:66px;border:0;border-radius:22px;background:linear-gradient(145deg,#fff,#ffe8ee);box-shadow:0 14px 38px rgba(112,58,76,.2);display:grid;place-items:center;font-size:38px;cursor:pointer;pointer-events:auto;animation:guideFloat 2.6s ease-in-out infinite}
++        .cute-guide-mascot:hover{transform:scale(1.05)}
++        .cute-guide-heart{position:absolute;right:-5px;top:-7px;font-size:20px;animation:guideHeart 1.25s ease-in-out infinite}
++        .cute-guide-tip{position:absolute;right:4px;bottom:-10px;background:#d9637c;color:#fff;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:800;letter-spacing:.04em;white-space:nowrap}
++        @keyframes guideFloat{50%{transform:translateY(-7px) rotate(2deg)}}
++        @keyframes guideHeart{50%{transform:scale(1.22) rotate(8deg)}}
++        @media(max-width:640px){.cute-guide-root{right:10px;bottom:10px}.cute-guide-mascot{width:58px;height:58px;border-radius:19px;font-size:34px}.cute-guide-bubble{font-size:.8rem;padding:11px 13px;max-width:calc(100vw - 86px)}}
++      `}</style>
++
++      <div className={`cute-guide-bubble ${bubbleOpen ? 'show' : ''}`}>
++        {current.text}
++      </div>
++
++      <button
++        type="button"
++        className="cute-guide-mascot"
++        onClick={() => setBubbleOpen((value) => !value)}
++        aria-label={bubbleOpen ? 'Hide guide message' : 'Show guide message'}
++      >
++        🧸
++        <span className="cute-guide-heart">💗</span>
++        <span className="cute-guide-tip">tap me</span>
++      </button>
++    </div>
++  )
++}
+diff --git a/src/components/ScratchCard.tsx b/src/components/ScratchCard.tsx
+new file mode 100644
+index 0000000..5a5c69d
+--- /dev/null
++++ b/src/components/ScratchCard.tsx
+@@ -0,0 +1,198 @@
++import { PointerEvent, useEffect, useRef, useState } from 'react'
++
++const prize = {
++  emoji: '🎁',
++  title: 'Surprise unlocked!',
++  text: 'One special date of your choice + unlimited hugs from ကိုကို ❤️',
++  note: 'No expiration date. Redeem whenever you want. 😌',
++}
++
++export default function ScratchCard() {
++  const canvasRef = useRef<HTMLCanvasElement | null>(null)
++  const scratchingRef = useRef(false)
++  const moveCountRef = useRef(0)
++  const [revealed, setRevealed] = useState(false)
++
++  const paintCover = () => {
++    const canvas = canvasRef.current
++    if (!canvas || revealed) return
++
++    const parent = canvas.parentElement
++    if (!parent) return
++
++    const rect = parent.getBoundingClientRect()
++    const dpr = Math.min(window.devicePixelRatio || 1, 2)
++    const width = Math.max(1, rect.width)
++    const height = Math.max(1, rect.height)
++
++    canvas.width = Math.round(width * dpr)
++    canvas.height = Math.round(height * dpr)
++    canvas.style.width = `${width}px`
++    canvas.style.height = `${height}px`
++
++    const ctx = canvas.getContext('2d')
++    if (!ctx) return
++
++    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
++    ctx.globalCompositeOperation = 'source-over'
++
++    const gradient = ctx.createLinearGradient(0, 0, width, height)
++    gradient.addColorStop(0, '#ef8ea3')
++    gradient.addColorStop(0.5, '#d96580')
++    gradient.addColorStop(1, '#b94a66')
++    ctx.fillStyle = gradient
++    ctx.fillRect(0, 0, width, height)
++
++    ctx.globalAlpha = 0.18
++    ctx.fillStyle = '#fff'
++    const spacing = 42
++    for (let y = 22; y < height; y += spacing) {
++      for (let x = 22; x < width; x += spacing) {
++        ctx.font = '18px system-ui'
++        ctx.fillText((x / spacing + y / spacing) % 2 > 1 ? '♡' : '✦', x, y)
++      }
++    }
++    ctx.globalAlpha = 1
++
++    ctx.textAlign = 'center'
++    ctx.textBaseline = 'middle'
++    ctx.fillStyle = '#fff'
++    ctx.font = `800 ${Math.max(22, Math.min(34, width / 16))}px system-ui`
++    ctx.fillText('Scratch me ✨', width / 2, height / 2 - 12)
++    ctx.font = `600 ${Math.max(13, Math.min(16, width / 34))}px system-ui`
++    ctx.globalAlpha = 0.9
++    ctx.fillText('Use your finger or mouse', width / 2, height / 2 + 28)
++    ctx.globalAlpha = 1
++  }
++
++  useEffect(() => {
++    paintCover()
++
++    const onResize = () => {
++      if (!revealed) paintCover()
++    }
++
++    window.addEventListener('resize', onResize)
++    return () => window.removeEventListener('resize', onResize)
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++  }, [revealed])
++
++  const checkProgress = () => {
++    const canvas = canvasRef.current
++    if (!canvas) return
++    const ctx = canvas.getContext('2d')
++    if (!ctx) return
++
++    const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data
++    const sampleStep = Math.max(4, Math.floor((window.devicePixelRatio || 1) * 10))
++    let sampled = 0
++    let transparent = 0
++
++    for (let y = 0; y < canvas.height; y += sampleStep) {
++      for (let x = 0; x < canvas.width; x += sampleStep) {
++        const alpha = pixels[(y * canvas.width + x) * 4 + 3]
++        sampled += 1
++        if (alpha < 32) transparent += 1
++      }
++    }
++
++    if (sampled > 0 && transparent / sampled > 0.42) {
++      setRevealed(true)
++    }
++  }
++
++  const scratch = (event: PointerEvent<HTMLCanvasElement>) => {
++    if (!scratchingRef.current || revealed) return
++
++    const canvas = canvasRef.current
++    if (!canvas) return
++    const ctx = canvas.getContext('2d')
++    if (!ctx) return
++
++    const rect = canvas.getBoundingClientRect()
++    const dpr = canvas.width / rect.width
++    const x = (event.clientX - rect.left) * dpr
++    const y = (event.clientY - rect.top) * dpr
++    const radius = 30 * dpr
++
++    ctx.save()
++    ctx.setTransform(1, 0, 0, 1, 0, 0)
++    ctx.globalCompositeOperation = 'destination-out'
++    ctx.beginPath()
++    ctx.arc(x, y, radius, 0, Math.PI * 2)
++    ctx.fill()
++    ctx.restore()
++
++    moveCountRef.current += 1
++    if (moveCountRef.current % 8 === 0) checkProgress()
++  }
++
++  const startScratch = (event: PointerEvent<HTMLCanvasElement>) => {
++    scratchingRef.current = true
++    event.currentTarget.setPointerCapture(event.pointerId)
++    scratch(event)
++  }
++
++  const stopScratch = () => {
++    scratchingRef.current = false
++    checkProgress()
++  }
++
++  return (
++    <section className="cute-scratch-section" id="scratch">
++      <style>{`
++        .cute-scratch-section{width:min(920px,calc(100% - 32px));margin:0 auto;padding:clamp(72px,9vw,112px) 0;text-align:center}
++        .cute-scratch-section .scratch-heading{max-width:650px;margin:0 auto 34px}
++        .cute-scratch-section .scratch-heading h2{font-family:Georgia,serif;font-size:clamp(36px,6vw,58px);line-height:1.05;margin:6px 0 14px;color:#49313a}
++        .cute-scratch-section .scratch-heading p{color:#806d74;line-height:1.7}
++        .scratch-wrap{position:relative;min-height:300px;border-radius:34px;overflow:hidden;background:linear-gradient(145deg,#fff,#fff3f6);box-shadow:0 24px 65px rgba(126,69,87,.15);border:1px solid rgba(217,99,124,.15)}
++        .scratch-prize{position:absolute;inset:0;display:grid;place-items:center;padding:34px;background:radial-gradient(circle at 50% 30%,#fff 0,#fff7f9 62%,#ffeef3 100%)}
++        .scratch-prize-inner{max-width:560px}
++        .scratch-prize .gift{font-size:58px;display:block;animation:scratchBob 1.7s ease-in-out infinite}
++        .scratch-prize h3{font-family:Georgia,serif;font-size:clamp(28px,5vw,44px);margin:8px 0 12px;color:#b94a66}
++        .scratch-prize p{font-size:clamp(1rem,2.8vw,1.22rem);line-height:1.75;margin:0;color:#5e4650}
++        .scratch-prize small{display:block;margin-top:12px;color:#9a7d86}
++        .scratch-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .5s ease,transform .5s ease}
++        .scratch-canvas:active{cursor:grabbing}
++        .scratch-canvas.is-revealed{opacity:0;transform:scale(1.04);pointer-events:none}
++        .scratch-hint{margin-top:16px;color:#a17f89;font-size:.84rem}
++        @keyframes scratchBob{50%{transform:translateY(-6px) rotate(4deg)}}
++        @media(max-width:640px){.scratch-wrap{min-height:330px;border-radius:26px}.cute-scratch-section{width:calc(100% - 24px)}}
++      `}</style>
++
++      <div className="scratch-heading">
++        <span className="eyebrow">A tiny present for you</span>
++        <h2>Scratch to reveal your surprise 🎁</h2>
++        <p>Use your finger on mobile or your mouse on PC. There is something hiding underneath.</p>
++      </div>
++
++      <div className="scratch-wrap">
++        <div className="scratch-prize">
++          <div className="scratch-prize-inner">
++            <span className="gift">{prize.emoji}</span>
++            <h3>{prize.title}</h3>
++            <p>{prize.text}</p>
++            <small>{prize.note}</small>
++          </div>
++        </div>
++
++        <canvas
++          ref={canvasRef}
++          className={`scratch-canvas ${revealed ? 'is-revealed' : ''}`}
++          onPointerDown={startScratch}
++          onPointerMove={scratch}
++          onPointerUp={stopScratch}
++          onPointerCancel={stopScratch}
++          onPointerLeave={() => {
++            if (scratchingRef.current) stopScratch()
++          }}
++          aria-label="Scratch card"
++        />
++      </div>
++
++      <div className="scratch-hint">
++        {revealed ? 'Yay! You found it 💕' : 'Scratch away about half of the card to reveal it ✨'}
++      </div>
++    </section>
++  )
++}
+diff --git a/src/components/WishFinale.tsx b/src/components/WishFinale.tsx
+new file mode 100644
+index 0000000..426b190
+--- /dev/null
++++ b/src/components/WishFinale.tsx
+@@ -0,0 +1,109 @@
++import { useMemo, useState } from 'react'
++
++type Phase = 'ready' | 'wishing' | 'celebrated'
++
++export default function WishFinale() {
++  const [phase, setPhase] = useState<Phase>('ready')
++  const confetti = useMemo(() => Array.from({ length: 44 }, (_, index) => index), [])
++
++  const celebrate = () => {
++    setPhase('celebrated')
++    if ('vibrate' in navigator) navigator.vibrate?.([80, 45, 120])
++  }
++
++  return (
++    <section className={`wish-finale ${phase === 'celebrated' ? 'is-celebrating' : ''}`} id="wish">
++      <style>{`
++        .wish-finale{position:relative;width:min(980px,calc(100% - 32px));margin:0 auto 70px;padding:clamp(56px,8vw,86px) clamp(22px,6vw,68px);overflow:hidden;text-align:center;border-radius:42px;background:radial-gradient(circle at 50% 15%,#423047 0,#251d31 48%,#17131f 100%);color:#fff;box-shadow:0 32px 80px rgba(52,34,59,.25)}
++        .wish-finale::before{content:'✦  ·  ✧   ·   ✦  ·  ✧   ·   ✦';position:absolute;inset:24px 0 auto;color:rgba(255,235,246,.35);font-size:clamp(16px,4vw,28px);letter-spacing:1.5vw;white-space:nowrap;animation:wishTwinkle 2.2s ease-in-out infinite alternate}
++        .wish-finale-content{position:relative;z-index:3;max-width:680px;margin:auto}
++        .wish-finale .wish-eyebrow{display:inline-block;color:#ffd8e3;font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;font-weight:800}
++        .wish-finale h2{font-family:Georgia,serif;font-size:clamp(38px,7vw,68px);line-height:1.02;margin:12px 0 16px}
++        .wish-finale p{color:#eadde6;line-height:1.75;margin:0 auto 28px;max-width:570px}
++        .wish-button{border:0;border-radius:999px;padding:14px 24px;background:linear-gradient(135deg,#f58aa1,#d85f7b);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 14px 34px rgba(216,95,123,.34);transition:.2s ease}
++        .wish-button:hover{transform:translateY(-2px) scale(1.02)}
++        .wish-stage{display:grid;place-items:center;gap:18px;margin-top:16px}
++        .cake{position:relative;width:190px;height:178px;margin:10px auto 2px}
++        .cake-plate{position:absolute;left:0;right:0;bottom:0;height:18px;border-radius:50%;background:#d9c3d5;box-shadow:0 8px 20px rgba(0,0,0,.25)}
++        .cake-layer{position:absolute;left:20px;right:20px;bottom:16px;height:90px;border-radius:18px 18px 12px 12px;background:linear-gradient(#ffc5d2,#f190aa);box-shadow:inset 0 -12px 0 rgba(193,75,105,.12)}
++        .cake-layer::before{content:'';position:absolute;inset:0 0 auto;height:25px;border-radius:18px 18px 45% 45%;background:#fff4f7;box-shadow:0 8px 0 -3px #fff4f7}
++        .cake-sprinkles{position:absolute;left:36px;right:36px;bottom:42px;font-size:16px;letter-spacing:9px;color:#fff2a8;z-index:3}
++        .candle{position:absolute;left:50%;bottom:103px;transform:translateX(-50%);width:14px;height:48px;border-radius:8px 8px 3px 3px;background:repeating-linear-gradient(135deg,#fff 0 7px,#f27495 7px 14px);z-index:4}
++        .flame-button{position:absolute;left:50%;bottom:147px;transform:translateX(-50%);width:48px;height:56px;border:0;background:transparent;cursor:pointer;z-index:6;padding:0}
++        .flame{display:block;width:26px;height:36px;margin:auto;border-radius:50% 50% 48% 48%;background:radial-gradient(circle at 50% 68%,#fff7a8 0 21%,#ffc349 22% 54%,#ff7b45 55% 100%);filter:drop-shadow(0 0 12px rgba(255,180,63,.9));transform-origin:50% 100%;animation:wishFlame .75s ease-in-out infinite alternate}
++        .flame-button:hover .flame{transform:scale(1.12)}
++        .wish-instruction{font-size:.88rem!important;color:#f5cbd8!important;margin:0!important}
++        .wish-done-heart{font-size:62px;animation:wishPop .65s cubic-bezier(.2,1.4,.4,1) both}
++        .wish-result{font-family:Georgia,serif;font-size:clamp(26px,5vw,40px);margin:4px 0 8px;color:#fff}
++        .wish-confetti{position:absolute;top:-30px;z-index:2;font-size:18px;animation:wishFall 3.4s linear infinite;pointer-events:none}
++        @keyframes wishFlame{from{transform:rotate(-4deg) scaleY(.95)}to{transform:rotate(4deg) scaleY(1.08)}}
++        @keyframes wishTwinkle{to{opacity:.45;transform:scale(1.01)}}
++        @keyframes wishFall{to{transform:translateY(720px) rotate(520deg);opacity:.1}}
++        @keyframes wishPop{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
++        @media(max-width:640px){.wish-finale{width:calc(100% - 24px);border-radius:28px;margin-bottom:48px}.cake{transform:scale(.9);margin-top:0}}
++      `}</style>
++
++      {phase === 'celebrated' && confetti.map((item) => (
++        <span
++          key={item}
++          className="wish-confetti"
++          style={{
++            left: `${(item * 37) % 100}%`,
++            animationDelay: `${(item % 11) * 0.12}s`,
++            animationDuration: `${2.6 + (item % 5) * 0.35}s`,
++          }}
++          aria-hidden="true"
++        >
++          {item % 3 === 0 ? '💗' : item % 3 === 1 ? '✦' : '🌸'}
++        </span>
++      ))}
++
++      <div className="wish-finale-content">
++        <span className="wish-eyebrow">One last little moment</span>
++
++        {phase === 'ready' && (
++          <>
++            <h2>Make a birthday wish ✨</h2>
++            <p>Close your eyes for a second, think of something you really want, and keep it secret.</p>
++            <button type="button" className="wish-button" onClick={() => setPhase('wishing')}>
++              I’m ready to make a wish 💫
++            </button>
++          </>
++        )}
++
++        {phase === 'wishing' && (
++          <>
++            <h2>Ready? 🎂</h2>
++            <p>Make your wish now… then tap the flame to blow the candle out.</p>
++            <div className="wish-stage">
++              <div className="cake" aria-label="Birthday cake with one candle">
++                <div className="cake-plate" />
++                <div className="cake-layer" />
++                <div className="cake-sprinkles">• • • • •</div>
++                <div className="candle" />
++                <button type="button" className="flame-button" onClick={celebrate} aria-label="Blow out the candle">
++                  <span className="flame" />
++                </button>
++              </div>
++              <p className="wish-instruction">☝️ Tap the flame to blow it out</p>
++            </div>
++          </>
++        )}
++
++        {phase === 'celebrated' && (
++          <>
++            <div className="wish-done-heart">💖</div>
++            <h2 className="wish-result">Wish made!</h2>
++            <p>
++              ကို့ကလေးလေး ဆုတောင်းသမျှတွေ တစ်ခုချင်းစီ အကောင်အထည်ပေါ်လာပါစေ။<br />
++              Happy Birthday, my love. 🎂❤️
++            </p>
++            <button type="button" className="wish-button" onClick={() => setPhase('ready')}>
++              Make another wish ✨
++            </button>
++          </>
++        )}
++      </div>
++    </section>
++  )
++}

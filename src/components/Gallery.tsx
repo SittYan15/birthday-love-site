@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { gallery } from '../data'
 
+function isVideo(src: string) {
+  return /\.(mp4|webm|ogg|mov)$/i.test(src)
+}
+
 export default function Gallery() {
   const [selected, setSelected] = useState<number | null>(null)
 
@@ -12,7 +16,9 @@ export default function Gallery() {
     document.body.style.overflow = 'hidden'
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setSelected(null)
+      if (event.key === 'Escape') {
+        setSelected(null)
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -23,31 +29,55 @@ export default function Gallery() {
     }
   }, [selected])
 
-  const photoModal = selected !== null
-    ? createPortal(
-        <div
-          className="modal-backdrop"
-          role="dialog"
-          aria-modal="true"
-          aria-label={gallery[selected].caption}
-          onClick={() => setSelected(null)}
-        >
-          <div className="photo-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="modal-close"
-              type="button"
-              aria-label="Close photo"
-              onClick={() => setSelected(null)}
+  const selectedItem =
+    selected !== null ? gallery[selected] : null
+
+  const mediaModal =
+    selectedItem !== null
+      ? createPortal(
+          <div
+            className="modal-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedItem.caption}
+            onClick={() => setSelected(null)}
+          >
+            <div
+              className="photo-modal"
+              onClick={(e) => e.stopPropagation()}
             >
-              ×
-            </button>
-            <img src={gallery[selected].src} alt={gallery[selected].caption} />
-            <p>{gallery[selected].caption}</p>
-          </div>
-        </div>,
-        document.body,
-      )
-    : null
+              <button
+                className="modal-close"
+                type="button"
+                aria-label="Close media"
+                onClick={() => setSelected(null)}
+              >
+                ×
+              </button>
+
+              {isVideo(selectedItem.src) ? (
+                <video
+                  className="gallery-modal-video"
+                  src={selectedItem.src}
+                  controls
+                  autoPlay
+                  playsInline
+                >
+                  Your browser does not support video playback.
+                </video>
+              ) : (
+                <img
+                  src={selectedItem.src}
+                  alt={selectedItem.caption}
+                />
+              )}
+
+              <p>{selectedItem.caption}</p>
+            </div>
+          </div>,
+          document.body,
+        )
+      : null
 
   return (
     <>
@@ -56,22 +86,50 @@ export default function Gallery() {
           <span className="eyebrow">အမှတ်တရများ</span>
           <h2>ကို့ရင်ထဲက ချစ်ရဲ့ ပုံရိပ်များ</h2>
         </div>
+
         <div className="polaroid-grid">
-          {gallery.map((photo, index) => (
-            <button
-              className={`polaroid tilt-${(index % 4) + 1}`}
-              key={photo.src}
-              type="button"
-              onClick={() => setSelected(index)}
-            >
-              <img src={photo.src} alt={photo.caption} />
-              <span style={{ fontSize:15 }} >{photo.caption}</span>
-            </button>
-          ))}
+          {gallery.map((item, index) => {
+            const video = isVideo(item.src)
+
+            return (
+              <button
+                className={`polaroid tilt-${(index % 4) + 1}`}
+                key={`${item.src}-${index}`}
+                type="button"
+                onClick={() => setSelected(index)}
+                aria-label={
+                  video
+                    ? `Play video: ${item.caption}`
+                    : `View photo: ${item.caption}`
+                }
+              >
+                {video ? (
+                  <>
+                    <video
+                      src={item.src}
+                      muted
+                      playsInline
+                      preload="metadata"
+                    />
+                    <div className="video-badge">▶</div>
+                  </>
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.caption}
+                  />
+                )}
+
+                <span style={{ fontSize: 15 }}>
+                  {item.caption}
+                </span>
+              </button>
+            )
+          })}
         </div>
       </section>
 
-      {photoModal}
+      {mediaModal}
     </>
   )
 }

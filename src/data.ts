@@ -24,9 +24,9 @@ export const timeline = [
 export const gallery = [
   { src: 'public/photos/p-1.jpg', caption: 'One of my favorite memories ❤️' },
   { src: '/photos/photo-2.svg', caption: 'You looked so happy here.' },
-  { src: 'public/photos/VID_20260228_193307_642.mp4', caption: 'I still remember this day.' },
-  { src: 'public/photos/20260910_174009.jpg', caption: 'ငယ်ငယ်တုန်းက ချစ်ဖို့ကောင်းချက်၊ ကြီးလာမှ ဝလာတာ 😁' },
-  { src: 'public/photos/IMG_20241117_211743_432.jpg', caption: 'နန်းဆန်နေသူလေးပေါ့ 😂' },
+  { src: 'public/photos/VID_20260228_193307_642.mp4', caption: '  ကို့ရဲ့ တစ်ဦးတည်းသော tiktoker လေးပေါ့' },
+  { src: 'public/photos/20260910_174009.jpg', caption: 'ငယ်ငယ်တုန်းက ချစ်ဖို့ကောင်းသလောက် ကြီးလာမှ ဝလာတာ 😁' },
+  { src: 'public/photos/IMG_20241117_211743_432.jpg', caption: 'နန်းဆန်နေသူလေးပေါ့ 😍' },
   { src: 'public/photos/bp-0.jpg', caption: 'နေရာတကာ ဆရာလုပ်ချင်တဲ့ ဆရာမလေးပေါ့ 😍' },
 ]
 
