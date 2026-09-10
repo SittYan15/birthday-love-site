@@ -1,0 +1,34 @@
+import { useMemo } from 'react'
+import { siteConfig } from '../data'
+
+type OpeningProps = { onOpen: () => void }
+
+export default function Opening({ onOpen }: OpeningProps) {
+  const hearts = useMemo(() => Array.from({ length: 18 }, (_, i) => ({
+    id: i,
+    left: `${(i * 37) % 100}%`,
+    delay: `${(i % 6) * 0.65}s`,
+    duration: `${7 + (i % 5)}s`,
+    size: `${14 + (i % 5) * 4}px`,
+  })), [])
+
+  return (
+    <div className="opening-screen">
+      <div className="floating-hearts" aria-hidden="true">
+        {hearts.map((heart) => (
+          <span
+            key={heart.id}
+            style={{ left: heart.left, animationDelay: heart.delay, animationDuration: heart.duration, fontSize: heart.size }}
+          >♥</span>
+        ))}
+      </div>
+      <div className="opening-card">
+        <span className="eyebrow">A little corner of the internet</span>
+        <div className="opening-icon">🎂</div>
+        <h1>Happy Birthday, {siteConfig.herName}</h1>
+        <p>I made something small, soft, and full of memories just for you. ❤️</p>
+        <button className="primary-button glow" onClick={onOpen}>Open your birthday surprise ✨</button>
+      </div>
+    </div>
+  )
+}
