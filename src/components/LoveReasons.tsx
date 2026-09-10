@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { loveReasons } from '../data'
 
 export default function LoveReasons() {
-  const [revealed, setRevealed] = useState<number[]>([0])
+  const [revealed, setRevealed] = useState<number[]>([])
   const reveal = (index: number) => {
     if (!revealed.includes(index)) setRevealed([...revealed, index])
   }

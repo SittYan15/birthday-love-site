@@ -6,23 +6,23 @@ export const siteConfig = {
 }
 
 export const loveReasons = [
-  { icon: '😊', title: 'Your Smile', text: 'It somehow makes even my worst days feel lighter.' },
-  { icon: '😂', title: 'Your Laugh', text: 'Especially when you laugh so much you can barely speak.' },
-  { icon: '🌷', title: 'Your Kindness', text: 'You care about people more than you realize.' },
-  { icon: '🐻', title: 'Your Cute Side', text: 'Even when you are pretending not to be cute.' },
-  { icon: '✨', title: 'Your Energy', text: 'You make ordinary days feel like something worth remembering.' },
-  { icon: '❤️', title: 'Just You', text: 'Because being yourself is already enough for me.' },
+  { icon: '😡', title: 'Pouting Face', text: 'စိတ်ကောက်ပြီး မျက်နှာဆူပုတ်နေရင် ဘလိုချစ်ဖို့ကောင်းနေမှန်း မသိတာမျိုး' },
+  { icon: '😂', title: 'Your Laugh', text: 'တစ်ခါတစ်ခါ ယောက်ျားဆန်တဲ့ ရယ်သံလေးကလဲ ကို့အတွတ် နားဝင်ချိုနေတာမျိုး' },
+  { icon: '🌷', title: 'Your Kindness', text: 'စိတ်ရင်းကောင်းပြီး လူကြီးမိဘအပေါ် သိတတ်တဲ့ စိတ်ထားမျိုးလေး' },
+  { icon: '🐻', title: 'Your Cute Side', text: '' },
+  { icon: '✨', title: 'Your Energy', text: '' },
+  { icon: '❤️', title: 'Just You', text: 'ဘလိုပဲဖြစ်ဖြစ် ချစ်ဖြစ်နေလို့ကို ချစ်ဖို့ကောင်းနေတာ' },
 ]
 
 export const timeline = [
-  { date: 'The Beginning', title: 'The Day We Met', text: 'I had no idea this person would become this important to me.', image: '/photos/memory-1.svg' },
-  { date: 'A Favorite Day', title: 'Our First Special Memory', text: 'One of those days I would happily live all over again.', image: '/photos/memory-2.svg' },
+  { date: 'The Beginning', title: 'The Day We Met', text: 'I had no idea this person would become this important to me.', image: 'public/photos/firstmeet.jpg' },
+  { date: 'A Favorite Day', title: 'Our First Special Memory', text: 'မထင်ထားပဲ ရုတ်တရက်ကြီး ကညင်ဆည် သွားခဲ့တဲ့နေ့လေးပေါ့', image: 'public/photos/firsttrip.jpeg' },
   { date: 'Us Being Us', title: 'A Random Happy Day', text: 'Nothing huge happened. We were just together, and that was enough.', image: '/photos/memory-3.svg' },
   { date: 'Today', title: 'Your Birthday', text: 'Another chapter, another memory, and hopefully many more with you.', image: '/photos/memory-4.svg' },
 ]
 
 export const gallery = [
-  { src: '/photos/photo-1.svg', caption: 'One of my favorite memories ❤️' },
+  { src: 'public/photos/p-1.jpg', caption: 'One of my favorite memories ❤️' },
   { src: '/photos/photo-2.svg', caption: 'You looked so happy here.' },
   { src: '/photos/photo-3.svg', caption: 'I still remember this day.' },
   { src: '/photos/photo-4.svg', caption: 'We need another day like this.' },

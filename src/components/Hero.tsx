@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="hero section" id="home">
       <div className="hero-copy">
-        <span className="eyebrow">Made with lots of love</span>
+        <span className="eyebrow">အချစ်များဖြင့် ပြုလုပ်ထားသည်</span>
         <h1>Happy Birthday,<br/><span>{siteConfig.herName} ❤️</span></h1>
         <p className="hero-message">{siteConfig.heroMessage}</p>
         <div className="hero-date">✨ {siteConfig.birthdayDate} ✨</div>

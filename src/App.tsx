@@ -23,7 +23,7 @@ export default function App() {
       {showBurst && !opened && <div className="opening-burst">❤️</div>}
       <main className={opened ? 'site-visible' : 'site-hidden'}>
         <nav className="top-nav">
-          <a className="brand" href="#home">♡ for you</a>
+          <a className="brand" href="#home">♡ for chit</a>
           <div>
             <a href="#timeline">Story</a>
             <a href="#gallery">Photos</a>
