@@ -23,8 +23,8 @@ export const timeline = [
 
 export const gallery = [
   { src: '/photos/20260910_171058.jpg', caption: 'မြန်မာဝတ်စုံလေးနဲ့လဲ ချစ်ဖို့ကောင်းနေတဲ့ ကို့ကလေးလေးပေါ့ 😘' },
-  { src: '/photos/VID_20260228_193307_642.mp4', caption: '  ကို့ရဲ့ တစ်ဦးတည်းသော tiktoker လေး' },
-  { src: '/photos/IMG_20241117_211743_432.jpg', caption: 'နန်းဆန်နေသူလေးပေါ့ 😍' },
+  { src: '/photos/tiktok.mp4', caption: '  ကို့ရဲ့ တစ်ဦးတည်းသော tiktoker လေး' },
+  { src: '/photos/bagan1.jpg', caption: 'နန်းဆန်နေသူလေးပေါ့ 😍' },
   { src: '/photos/20260910_174009.jpg', caption: 'ငယ်ငယ်တုန်းက ချစ်ဖို့ကောင်းသလောက် ကြီးလာမှ ဝလာတာ 😁' },
   { src: '/photos/bp-0.jpg', caption: 'နေရာတကာ ဆရာလုပ်ချင်တဲ့ ဆရာမလေးပေါ့ 😍' },
   { src: '/photos/IMG_20241122_223542_166.jpg', caption: 'တစ်ခါတစ်လေလဲ တစ်ခုခု လိုနေသလိုပဲနော် 😮‍💨' },
