@@ -25,7 +25,8 @@ export default function Opening({ onOpen }: OpeningProps) {
       <div className="opening-card">
         <span className="eyebrow">A little corner of the internet</span>
         <div className="opening-icon">🎂</div>
-        <h1>Happy Birthday, {siteConfig.herName}</h1>
+        <h1>Happy Birthday,</h1>
+        <h2>{siteConfig.herName} ❤️</h2>
         <p>I made something small, soft, and full of memories just for you. ❤️</p>
         <button className="primary-button glow" onClick={onOpen}>Open your birthday surprise ✨</button>
       </div>

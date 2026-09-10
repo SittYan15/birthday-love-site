@@ -7,17 +7,15 @@ export default function FinalLetter() {
     <section className="section final-section" id="final">
       <div className="final-card">
         <span className="eyebrow">And finally...</span>
-        <h2>Happy Birthday, my love. ❤️</h2>
+        <h2>Happy Birthday,</h2>
+        <h3>ကို့ရဲ့ အာပူတူးလေး. ❤️</h3>
         <p>
-          ဒီနှစ်မှာလဲ အစစအရာရာ အကုန်အဆင်ပြေပါစေလို့ ကိုကိုဆုတောင်းပေးပါတယ်နော်။
-          ကိုကိုအကြီးကြီးချစ်တယ်ဆိုတာကို ကိုကိုသိပြီးသားပါပဲ။ အခုလို အချစ်နဲ့ ပြည့်နေတဲ့နေ့မှာ ကိုကိုအတွက် အရမ်းအရမ်းပျော်ရွှင်စရာကောင်းတဲ့နေ့ဖြစ်ပါစေလို့ ဆုတောင်းပေးပါတယ်။
-          အာပူတူးလေး
-          I hope this year brings you the happiness you deserve. Thank you for being part of my life,
-          for listening to me, laughing with me, supporting me, and creating all these memories with me.
+          ဘာလိုလိုနဲ့ နောက်ထပ် တစ်နှစ်တောင် ထပ်ကြီးသွားပြန်ပြီနော်။
+          ဒီနေ့ကစပြီး လာမဲ့ နှစ်ပေါင်းများစွာ အစစ အရာရာ အကုန်အဆင်ပြေပါစေလို့ ကိုကိုထပ်မံဆုတောင်းပေးပါတယ်။
         </p>
         <p>
-          I do not know exactly what every future day will look like, but I hope there will be many more
-          birthdays where I get to tell you how grateful I am that you are here.
+          ဒီနှစ်လဲ ကိုကို ချစ်ဘေးနားမှာ မရှိနိုင်လို့လဲ ကိုကိုတောင်းပန်ပါတယ်ကွယ်။
+          အမြန်ဆုံးနိးစပ်အောင်လဲ ကိုကို အကောင်းဆုံးကြိုးစားနေပါတယ် အာပူတူးလေး။
         </p>
         <p className="final-emphasis">Keep smiling, keep dreaming, and never forget how loved you are.</p>
         <div className="signature">With all my love,<br/><strong>{siteConfig.yourName}</strong> ❤️</div>

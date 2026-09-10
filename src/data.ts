@@ -1,7 +1,7 @@
 export const siteConfig = {
-  herName: 'My Love',
-  yourName: 'Your Name',
-  birthdayDate: 'September 9, 2026',
+  herName: 'အာပူတူးလေး',
+  yourName: 'ကိုကို',
+  birthdayDate: 'September 11, 2026',
   heroMessage: 'Another year of you, another year I’m thankful that you’re in my life.',
 }
 

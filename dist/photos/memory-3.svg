@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FBE7EC"/><stop offset="1" stop-color="#FFF9F3"/></linearGradient></defs>
-<rect width="1200" height="900" fill="url(#g)"/>
-<circle cx="165" cy="145" r="110" fill="#fff" opacity=".45"/><circle cx="1030" cy="730" r="170" fill="#fff" opacity=".35"/>
-<path d="M600 575 C515 505 365 405 365 275 C365 185 440 135 515 150 C560 159 588 187 600 218 C612 187 640 159 685 150 C760 135 835 185 835 275 C835 405 685 505 600 575Z" fill="#D9637C" opacity=".22"/>
-<text x="600" y="370" text-anchor="middle" font-size="120" font-family="Georgia, serif" fill="#B94A66">☁</text>
-<text x="600" y="665" text-anchor="middle" font-size="44" font-family="Georgia, serif" fill="#6C4B56">Us Being Us</text>
-<text x="600" y="720" text-anchor="middle" font-size="24" font-family="Arial, sans-serif" fill="#967984">Replace this SVG with your own photo</text>
-</svg>
