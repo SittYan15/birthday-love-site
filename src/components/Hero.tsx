@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="hero section" id="home">
       <div className="hero-copy">
-        <span className="eyebrow">အချစ်များဖြင့် ပြုလုပ်ထားသည်</span>
+        <span className="eyebrow">အချစ်များဖြင့် ပြုလုပ်ထားသည့်</span>
         <h1>Happy Birthday,<br/></h1>
         <h2><span>အာပူတူးလေး ❤️</span></h2>
         <p className="hero-message">{siteConfig.heroMessage}</p>
@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="hero-photo-wrap">
         <div className="hero-sparkle s1">✦</div>
         <div className="hero-sparkle s2">♡</div>
-        <img className="hero-photo" src="/photos/20260910_171058.jpg" alt="Ko Ko's Ka Lay Lay Photo" />
+        <img className="hero-photo" src="/photos/coverphoto1.jpg" alt="Ko Ko's Ka Lay Lay Photo" />
         <div className="photo-note">ချစ်ရသော ကလေးလေး ♡</div>
       </div>
     </section>

@@ -6,8 +6,8 @@ export const siteConfig = {
 }
 
 export const loveReasons = [
-  { icon: '😡', title: 'Pouting Face', text: 'စိတ်ကောက်ပြီး မျက်နှာဆူပုတ်နေရင် ဘလိုချစ်ဖို့ကောင်းနေမှန်း မသိတာမျိုး' },
-  { icon: '😂', title: 'Laugh', text: 'တစ်ခါတစ်ခါ ယောက်ျားဆန်တဲ့ ရယ်သံလေးကလဲ ကို့အတွတ် နားဝင်ချိုနေတာမျိုး' },
+  { icon: '😠', title: 'Pouting Face', text: 'စိတ်ကောက်ပြီး မျက်နှာဆူပုတ်နေရင် ဘလိုချစ်ဖို့ကောင်းနေမှန်း မသိတာမျိုး' },
+  { icon: '😂', title: 'Laugh', text: 'တစ်ခါတစ်ခါ ယောက်ျားဆန်တဲ့ ရယ်သံလေးကလဲ ကို့အတွတ် ဆွဲဆောင်မှုရှိနေတာမျိုးလေး' },
   { icon: '🌷', title: 'Kindness', text: 'စိတ်ရင်းကောင်းပြီး လူကြီးမိဘအပေါ် သိတတ်တဲ့ စိတ်ထားလေးကိုလဲ သဘောကျတယ်' },
   { icon: '🐻', title: 'Cute Side', text: 'ရန်ဖြစ်တဲ့အချိန်လဲ ချစ်ဖို့ကောင်းတယ်၊ တည့်နေတဲ့ချိန်လဲ ချစ်ဖို့ကောင်းတယ်၊ ဘယ်ချိန်ဖြစ်ဖြစ် ချစ်ဖို့ကောင်းနေတာ' },
   { icon: '✨', title: 'Safe Place', text: 'ဖောက်ပြန်တတ်တဲ့ခေတ်ကြီးထဲမှာ ဘယ်ချိန်ပဲဖြစ်ဖြစ် ကို့ကလေးလေး ဖောက်ပြန်မှာမဟုတ်ဘူးဆိုတဲ့ လုံခြုံတဲ့ခံစားချက်လေးကိုလဲ သဘောကျတယ်' },
@@ -15,19 +15,19 @@ export const loveReasons = [
 ]
 
 export const timeline = [
-  { date: 'The Beginning', title: 'The Day We Met', text: 'ပထမဆုံး လည်လည်ထွတ်ခဲ့တုန်း အချိန်လေးပေါ့', image: '/photos/firstmeet.jpg' },
-  { date: 'A Favorite Day', title: 'Our First Special Memory', text: 'မထင်ထားပဲ ရုတ်တရက်ကြီး ကညင်ဆည် သွားခဲ့တဲ့နေ့လေးပေါ့', image: '/photos/firsttrip.jpeg' },
-  { date: 'Us Being Us', title: 'A Random Happy Day', text: 'အတူတူ လည်လည်ထွတ်တဲ့နေ့ရက်တွေကတော့ မေ့မပျောက်နိုင်တဲ့ နေ့ရက်တွေပဲပေါ့', image: '/photos/bp-2.png' },
-  { date: '11 Sep 2026', title: 'Chit\'s Birthday', text: 'Another chapter, another memory, and hopefully many more with you.', image: '/photos/memory-4.svg' },
+  { date: 'The Beginning', title: 'First Date', text: 'ပထမဆုံး ၂ ယောက်အတူတူ လည်လည်ထွတ်ခဲ့တုန်း အချိန်လေးပေါ့ 😎 (ဘယ်တော့မှ မေ့ရမှာမဟုတ်တဲ့ နေ့ရက်လေး 🥰)', image: '/photos/firstmeet.jpg' },
+  { date: 'A Favorite Day', title: 'Special Memory', text: 'ခနခန အမြဲအတူတူသွားဖြစ်တဲ့ ရန်ကုန်က တစ်နေရာပေါ့ ကွယ် ❤️', image: '/photos/1771993869739 (2) (1).png' },
+  { date: 'Us Being Us', title: 'A Happy Day', text: 'အတူတူရှိနေတဲ့ အချိန်တိုင်းကတော့ မေ့မပျောက်နိုင်တဲ့ နေ့ရက်တွေပဲပေါ့ 🤗', image: '/photos/bp-2.png' },
+  { date: '11 Sep 2026', title: 'Chit\'s Birthday', text: 'တစ်နှစ်ကုန်သွားလဲ နောက်နှစ်မှာ ကြည်နူးဖွယ်ကောင်းမဲ့ memories အသစ်တွေ အတူတူဖန်တီးဖို့ အသင့်ရှိနေပါပြီနော် ❤️', image: '/photos/IMG_20260910_201942_086 (1).jpg' },
 ]
 
 export const gallery = [
-  { src: '/photos/p-1.jpg', caption: 'One of my favorite memories ❤️' },
-  { src: '/photos/photo-2.svg', caption: 'You looked so happy here.' },
-  { src: '/photos/VID_20260228_193307_642.mp4', caption: '  ကို့ရဲ့ တစ်ဦးတည်းသော tiktoker လေးပေါ့' },
-  { src: '/photos/20260910_174009.jpg', caption: 'ငယ်ငယ်တုန်းက ချစ်ဖို့ကောင်းသလောက် ကြီးလာမှ ဝလာတာ 😁' },
+  { src: '/photos/20260910_171058.jpg', caption: 'မြန်မာဝတ်စုံလေးနဲ့လဲ ချစ်ဖို့ကောင်းနေတဲ့ ကို့ကလေးလေးပေါ့ 😘' },
+  { src: '/photos/VID_20260228_193307_642.mp4', caption: '  ကို့ရဲ့ တစ်ဦးတည်းသော tiktoker လေး' },
   { src: '/photos/IMG_20241117_211743_432.jpg', caption: 'နန်းဆန်နေသူလေးပေါ့ 😍' },
+  { src: '/photos/20260910_174009.jpg', caption: 'ငယ်ငယ်တုန်းက ချစ်ဖို့ကောင်းသလောက် ကြီးလာမှ ဝလာတာ 😁' },
   { src: '/photos/bp-0.jpg', caption: 'နေရာတကာ ဆရာလုပ်ချင်တဲ့ ဆရာမလေးပေါ့ 😍' },
+  { src: '/photos/IMG_20241122_223542_166.jpg', caption: 'တစ်ခါတစ်လေလဲ တစ်ခုခု လိုနေသလိုပဲနော် 😮‍💨' },
 ]
 
 export const letters = [

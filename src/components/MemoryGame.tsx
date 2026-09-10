@@ -147,8 +147,9 @@ export default function MemoryGame() {
       <section className="section game-section" id="game">
         <div className="section-heading">
           <span className="eyebrow">A tiny game for you</span>
-          <h2>Match our cute little things</h2>
-          <p>Find all six pairs. Your prize is extremely exclusive.</p>
+          <h2 style={{lineHeight: 1.5}}>cards တွေမှာပါတဲ့ အရုပ် ၂ ခု တူတာရှာ</h2>
+          <br/>
+          <p>၆ စုံ ပြည့်အောင်ရှာနိုင်ရင်၊ အထူးဆုကြီးတွေရှိတယ်နော်!</p>
         </div>
 
         <div className="game-shell">

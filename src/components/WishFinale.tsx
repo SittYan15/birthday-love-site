@@ -81,8 +81,8 @@ export default function WishFinale() {
 
         {phase === 'ready' && (
           <>
-            <h2>Make a birthday wish ✨</h2>
-            <p>Close your eyes for a second, think of something you really want, and keep it secret.</p>
+            <h3>✨ မွေးနေ့မှာ ဆုတစ်ခုတောင်းလိုက်ပါ ✨</h3>
+            <p>🤗 မျက်လုံးကို တစ်စက္ကန့်လောက်မှိတ်ပြီး၊ တစ်ကယ်တန်းဖြစ်ချင်ကို စဉ်းစားပြီးမှ ဆုတောင်းနော် 😘</p>
             <button type="button" className="wish-button" onClick={() => setPhase('wishing')}>
               I’m ready to make a wish 💫
             </button>
@@ -91,8 +91,8 @@ export default function WishFinale() {
 
         {phase === 'wishing' && (
           <>
-            <h2>Ready? 🎂</h2>
-            <p>Make your wish now… then tap the flame to blow the candle out.</p>
+            <h3>အဆင်သင့်ပဲပေါ့? 🎂</h3>
+            <p>အခုဆုတောင်းလို့ရပါပြီ… ပြီးရင် ဖယောင်းတိုင်မှုတ်ပြီး မီးငြိမ်းဖို့အတွတ် မီးတောက်လေးကို ထိလိုက်ပါ</p>
             <div className="wish-stage">
               <div className="cake" aria-label="Birthday cake with one candle">
                 <div className="cake-plate" />
@@ -111,10 +111,10 @@ export default function WishFinale() {
         {phase === 'celebrated' && (
           <>
             <div className="wish-done-heart">💖</div>
-            <h2 className="wish-result">Wish made!</h2>
+            <h3 className="wish-result">ဆုတောင်းလို့ပြီးသွားပါပြီ!</h3>
             <p>
-              ကို့ကလေးလေး ဆုတောင်းသမျှတွေ တစ်ခုချင်းစီ အကောင်အထည်ပေါ်လာပါစေ။<br />
-              Happy Birthday, my love. 🎂❤️
+              ကို့ကလေးလေး ဆုတောင်းသမျှတွေ အကောင်အထည်ပေါ်လာပါစေ။<br />
+              Happy Birthday, ကို့ရဲ့ အာပူတူးလေး.. 🎂❤️
             </p>
             <p className="wish-instruction">
               ဒီမွေးနေ့အတွက် ဆုတောင်းတစ်ခုပဲနော် 💫 Your wish is safely kept. ❤️

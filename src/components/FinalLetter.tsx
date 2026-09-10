@@ -22,9 +22,9 @@ export default function FinalLetter() {
           ပြီးတော့ အမြန်ဆုံးနိးစပ်အောင်လဲ ကိုကို အကောင်းဆုံးကြိုးစားနေပါတယ်နော်။
         </p>
         <p className="final-emphasis">နှစ်ယောက်အတူတူ စိတ်ကူးထားတဲ့ အိပ်မက်တွေလဲ ဖြစ်လာဖို့ နီးစပ်နေပါပြီနော်။</p>
-        <div className="signature">အချစ်များစွာဖြင့်,<br/><strong>{siteConfig.yourName}</strong> ❤️</div>
+        <div className="signature">အချစ်များစွာဖြင့်,<br/>❤️ <strong>{siteConfig.yourName}</strong> ❤️</div>
         <button className="secret-heart" onClick={() => setSecret(true)} aria-label="Secret surprise">♥</button>
-        <small className="secret-hint">ရှူး.... ပြောချင်တဲ့ လျှို့ဝှက်ချက်တွေ ရှိသေးတယ်နော်၊ သိချင် CB လာခဲ့</small>
+        <small className="secret-hint">ရှူး.... ပြောချင်တဲ့ လျှို့ဝှက်ချက်တွေ ရှိသေးတယ်နော်၊ သိချင် CB လာခဲ့ 😁</small>
       </div>
       {secret && (
         <div className="modal-backdrop celebration" onClick={() => setSecret(false)}>
