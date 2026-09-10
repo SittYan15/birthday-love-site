@@ -2,63 +2,63 @@ export const siteConfig = {
   herName: 'အာပူတူးလေး',
   yourName: 'ကိုကို',
   birthdayDate: 'September 11, 2026',
-  heroMessage: 'Another year of you, another year I’m thankful that you’re in my life.',
+  heroMessage: 'နှစ်စဉ်နှစ်တိုင်း ကိုကို့ ကလေးလေး အဖြစ် ရှိနေပေးလို့, ကျေးဇူးအများကြီး တင်ပါတယ်။',
 }
 
 export const loveReasons = [
   { icon: '😡', title: 'Pouting Face', text: 'စိတ်ကောက်ပြီး မျက်နှာဆူပုတ်နေရင် ဘလိုချစ်ဖို့ကောင်းနေမှန်း မသိတာမျိုး' },
-  { icon: '😂', title: 'Your Laugh', text: 'တစ်ခါတစ်ခါ ယောက်ျားဆန်တဲ့ ရယ်သံလေးကလဲ ကို့အတွတ် နားဝင်ချိုနေတာမျိုး' },
-  { icon: '🌷', title: 'Your Kindness', text: 'စိတ်ရင်းကောင်းပြီး လူကြီးမိဘအပေါ် သိတတ်တဲ့ စိတ်ထားမျိုးလေး' },
-  { icon: '🐻', title: 'Your Cute Side', text: '' },
-  { icon: '✨', title: 'Your Energy', text: '' },
-  { icon: '❤️', title: 'Just You', text: 'ဘလိုပဲဖြစ်ဖြစ် ချစ်ဖြစ်နေလို့ကို ချစ်ဖို့ကောင်းနေတာ' },
+  { icon: '😂', title: 'Laugh', text: 'တစ်ခါတစ်ခါ ယောက်ျားဆန်တဲ့ ရယ်သံလေးကလဲ ကို့အတွတ် နားဝင်ချိုနေတာမျိုး' },
+  { icon: '🌷', title: 'Kindness', text: 'စိတ်ရင်းကောင်းပြီး လူကြီးမိဘအပေါ် သိတတ်တဲ့ စိတ်ထားလေးကိုလဲ သဘောကျတယ်' },
+  { icon: '🐻', title: 'Cute Side', text: 'ရန်ဖြစ်တဲ့အချိန်လဲ ချစ်ဖို့ကောင်းတယ်၊ တည့်နေတဲ့ချိန်လဲ ချစ်ဖို့ကောင်းတယ်၊ ဘယ်ချိန်ဖြစ်ဖြစ် ချစ်ဖို့ကောင်းနေတာ' },
+  { icon: '✨', title: 'Safe Place', text: 'ဖောက်ပြန်တတ်တဲ့ခေတ်ကြီးထဲမှာ ဘယ်ချိန်ပဲဖြစ်ဖြစ် ကို့ကလေးလေး ဖောက်ပြန်မှာမဟုတ်ဘူးဆိုတဲ့ လုံခြုံတဲ့ခံစားချက်လေးကိုလဲ သဘောကျတယ်' },
+  { icon: '❤️', title: 'You', text: 'ဘလိုပဲဖြစ်ဖြစ် ချစ်ဖြစ်နေလို့ကို ချစ်နေရတာ' },
 ]
 
 export const timeline = [
-  { date: 'The Beginning', title: 'The Day We Met', text: 'I had no idea this person would become this important to me.', image: 'public/photos/firstmeet.jpg' },
+  { date: 'The Beginning', title: 'The Day We Met', text: 'ပထမဆုံး လည်လည်ထွတ်ခဲ့တုန်း အချိန်လေးပေါ့', image: 'public/photos/firstmeet.jpg' },
   { date: 'A Favorite Day', title: 'Our First Special Memory', text: 'မထင်ထားပဲ ရုတ်တရက်ကြီး ကညင်ဆည် သွားခဲ့တဲ့နေ့လေးပေါ့', image: 'public/photos/firsttrip.jpeg' },
-  { date: 'Us Being Us', title: 'A Random Happy Day', text: 'Nothing huge happened. We were just together, and that was enough.', image: '/photos/memory-3.svg' },
-  { date: 'Today', title: 'Your Birthday', text: 'Another chapter, another memory, and hopefully many more with you.', image: '/photos/memory-4.svg' },
+  { date: 'Us Being Us', title: 'A Random Happy Day', text: 'အတူတူ လည်လည်ထွတ်တဲ့နေ့ရက်တွေကတော့ မေ့မပျောက်နိုင်တဲ့ နေ့ရက်တွေပဲပေါ့', image: 'public/photos/bp-2.png' },
+  { date: '11 Sep 2026', title: 'Chit\'s Birthday', text: 'Another chapter, another memory, and hopefully many more with you.', image: '/photos/memory-4.svg' },
 ]
 
 export const gallery = [
   { src: 'public/photos/p-1.jpg', caption: 'One of my favorite memories ❤️' },
   { src: '/photos/photo-2.svg', caption: 'You looked so happy here.' },
-  { src: '/photos/photo-3.svg', caption: 'I still remember this day.' },
-  { src: '/photos/photo-4.svg', caption: 'We need another day like this.' },
-  { src: '/photos/photo-5.svg', caption: 'Us being ridiculous 😂' },
-  { src: '/photos/photo-6.svg', caption: 'My favorite person.' },
+  { src: 'public/photos/VID_20260228_193307_642.mp4', caption: 'I still remember this day.' },
+  { src: 'public/photos/20260910_174009.jpg', caption: 'ငယ်ငယ်တုန်းက ချစ်ဖို့ကောင်းချက်၊ ကြီးလာမှ ဝလာတာ 😁' },
+  { src: 'public/photos/IMG_20241117_211743_432.jpg', caption: 'နန်းဆန်နေသူလေးပေါ့ 😂' },
+  { src: 'public/photos/bp-0.jpg', caption: 'နေရာတကာ ဆရာလုပ်ချင်တဲ့ ဆရာမလေးပေါ့ 😍' },
 ]
 
 export const letters = [
   {
     icon: '☀️',
     title: "Open when you're happy",
-    body: "I hope whatever made you smile today stays with you for a long time. Save a little of that happiness for me too. ❤️",
+    body: "ကို့ကလေးလေးပျော်ရင် ကိုကိုလဲ ပျော်တာပေါ့ကွယ်။ ဘာတွေဖြစ်ပြီး ပျော်နေတာလဲ ဆိုတာ ကို့စီ ပြန်ပြောပြပါအုံး၊ နားထောင်ချင်လို့။ 😘",
   },
   {
     icon: '🌧️',
     title: "Open when you're sad",
-    body: "Whatever happened today, one difficult moment does not get to decide your whole story. I am always cheering for you.",
+    body: "ဘာလို့ စိတ်မကောင်းဖြစ်နေတာလဲ ကလေးလေးရဲ့၊ လာလာ ကိုကို့ chatbox မှာ ချစ်ကို စိတ်မကောင်းဖြစ်အောင်လုပ်တဲ့ လူတွေအကြောင်း အတင်းတုတ်ကြမယ်။",
   },
   {
     icon: '🥺',
     title: 'Open when you miss me',
-    body: "I probably miss you too. So imagine I am right there giving you the longest hug and refusing to let go.",
+    body: "ကိုကိုလဲ ကို့ကလေးလေးကို အကြီးကြီး လွမ်းနေတာပေါ့ကွယ်။ တစ်ရက်ပြီးတစ်ရက် ပြန်တွေ့ရတော့မဲ့ အချိန်တွေက တဖြည်းဖြည်းချင်း နီးလာပါပြီနော်၊ အားတင်းထား။ အာဂျား အာဂျား....",
   },
   {
     icon: '🌙',
     title: "Open when you can't sleep",
-    body: "Close your eyes, relax your shoulders, and remember that tomorrow is another chance for something beautiful. Good night, my love.",
+    body: "ဘာတွေတွေးပြီး အိပ်မပျော်ဖြစ်နေတာတုန်း ကလေးလေးရဲ့၊ အိပ်လို့မရရင် ဘာလုပ်ရမလဲဆိုတာ သိတယ်မလား။ ကိုကို ပြောထားတယ်လေ၊ မေ့နေရင် ထပ်ပြောမယ်, အိပ်မပျော်တိုင်း ကို့စီ အချိန်မရွေးဖုန်းဆက်လို့ရတယ်နော်၊ အာပူတူးလေး...❤️",
   },
   {
     icon: '🫶',
     title: 'Open when you need love',
-    body: "Here is your reminder: you are deeply loved, very appreciated, and permanently stuck with me. No refunds. ❤️",
+    body: "အမလေးတော့၊ အချစ်တွေလိုနေတယ်လို့ ခံစားနေရတုန်းလား။ ဒီလောက်ထိ အကြီးကြီးချစ်ပေးနေတာကိုနော် 🤨။ ထပ်တိုးပေးရအုံးမယ်ဆိုရင်တော့ တစ်ကမ္ဘာလုံး ကို့အချစ်တွေနဲ့ ပြည့်ကုန်တော့မှာပဲ 😂",
   },
   {
-    icon: '🎂',
-    title: 'Open on your birthday',
-    body: "Happy birthday! I hope this year gives you more reasons to smile, dream bigger, and feel proud of how far you have come.",
+    icon: '🧧',
+    title: 'Open when you need pocketmoney',
+    body: "ဒါကိုမြင်တာနဲ့ တန်းဖွင့်မယ်ဆိုတာ သိနေတယ်နော် 😒။ လာလာ ဒီစာကို scrrenshot ပြပြီး ကို့စီမှာ လာထုတ်။",
   },
 ]

@@ -10,9 +10,11 @@ export default function LoveReasons() {
   return (
     <section className="section" id="reasons">
       <div className="section-heading">
-        <span className="eyebrow">For the record</span>
-        <h2>Things I love about you</h2>
-        <p>Tap each little card. I could probably make a hundred of these.</p>
+        <span className="eyebrow">ကိုကို ချစ်ကို အကြီးကြီး</span>
+        <br />
+        <h2>ချစ်ရတဲ့ အကြောင်းအရင်း</h2>
+        <br />
+        <p>တစ်ကဒ်ချင်းစီကို ထိပြီးကြည့်၊ ဒီလိုမျိုးလေး အခု ၁၀၀ မက လုပ်လိုက်လို့တောင်ရတယ်နော်</p>
       </div>
       <div className="reason-grid">
         {loveReasons.map((reason, index) => {

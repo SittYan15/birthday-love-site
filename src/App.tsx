@@ -38,7 +38,7 @@ export default function App() {
         <Letters />
         <MemoryGame />
         <FinalLetter />
-        <footer>Made with way too many hearts ❤️</footer>
+        <footer>ကို့ကလေးလေးအတွတ် အချစ်များဖြင့် ဖန်တီးထားသည်။ ❤️</footer>
       </main>
     </>
   )

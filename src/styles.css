@@ -74,7 +74,7 @@ img { max-width: 100%; display: block; }
 .hero-date { display: inline-block; margin: 10px 0 28px; padding: 9px 14px; border-radius: 999px; background: #fff; box-shadow: 0 8px 25px rgba(93,57,68,.07); font-size: .9rem; color: #7b5d67; }
 .hero-photo-wrap { position: relative; width: min(450px, 90%); justify-self: center; transform: rotate(2deg); }
 .hero-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; background: var(--pink-soft); border: 14px solid white; border-bottom-width: 70px; box-shadow: 0 30px 80px rgba(104,61,74,.18); }
-.photo-note { position: absolute; left: 0; right: 0; bottom: 22px; text-align: center; font-family: "Brush Script MT", "Segoe Script", cursive; font-size: 1.45rem; color: #795966; }
+.photo-note { position: absolute; left: 0; right: 0; bottom: 5px; text-align: center; font-family: "Brush Script MT", "Segoe Script", cursive; font-size: 1.45rem; color: #795966; }
 .hero-sparkle { position: absolute; z-index: 2; font-size: 40px; color: #d46b82; animation: bob 3s ease-in-out infinite; }
 .hero-sparkle.s1 { top: 8%; left: -42px; }
 .hero-sparkle.s2 { right: -30px; bottom: 20%; font-size: 55px; animation-delay: .8s; }
