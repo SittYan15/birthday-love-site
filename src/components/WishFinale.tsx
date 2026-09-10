@@ -2,17 +2,35 @@ import { useMemo, useState } from 'react'
 
 type Phase = 'ready' | 'wishing' | 'celebrated'
 
+const WISH_STORAGE_KEY = 'birthday-wish-made-v1'
+
+function hasAlreadyMadeWish() {
+  try {
+    return localStorage.getItem(WISH_STORAGE_KEY) === 'true'
+  } catch {
+    return false
+  }
+}
+
 export default function WishFinale() {
-  const [phase, setPhase] = useState<Phase>('ready')
+  const [phase, setPhase] = useState<Phase>(() => hasAlreadyMadeWish() ? 'celebrated' : 'ready')
+  const [justCelebrated, setJustCelebrated] = useState(false)
   const confetti = useMemo(() => Array.from({ length: 44 }, (_, index) => index), [])
 
   const celebrate = () => {
+    try {
+      localStorage.setItem(WISH_STORAGE_KEY, 'true')
+    } catch {
+      // If storage is unavailable, still complete the wish for this session.
+    }
+
+    setJustCelebrated(true)
     setPhase('celebrated')
     if ('vibrate' in navigator) navigator.vibrate?.([80, 45, 120])
   }
 
   return (
-    <section className={`wish-finale ${phase === 'celebrated' ? 'is-celebrating' : ''}`} id="wish">
+    <section className={`wish-finale ${justCelebrated ? 'is-celebrating' : ''}`} id="wish">
       <style>{`
         .wish-finale{position:relative;width:min(980px,calc(100% - 32px));margin:0 auto 70px;padding:clamp(56px,8vw,86px) clamp(22px,6vw,68px);overflow:hidden;text-align:center;border-radius:42px;background:radial-gradient(circle at 50% 15%,#423047 0,#251d31 48%,#17131f 100%);color:#fff;box-shadow:0 32px 80px rgba(52,34,59,.25)}
         .wish-finale::before{content:'✦  ·  ✧   ·   ✦  ·  ✧   ·   ✦';position:absolute;inset:24px 0 auto;color:rgba(255,235,246,.35);font-size:clamp(16px,4vw,28px);letter-spacing:1.5vw;white-space:nowrap;animation:wishTwinkle 2.2s ease-in-out infinite alternate}
@@ -43,7 +61,7 @@ export default function WishFinale() {
         @media(max-width:640px){.wish-finale{width:calc(100% - 24px);border-radius:28px;margin-bottom:48px}.cake{transform:scale(.9);margin-top:0}}
       `}</style>
 
-      {phase === 'celebrated' && confetti.map((item) => (
+      {justCelebrated && confetti.map((item) => (
         <span
           key={item}
           className="wish-confetti"
@@ -98,9 +116,9 @@ export default function WishFinale() {
               ကို့ကလေးလေး ဆုတောင်းသမျှတွေ တစ်ခုချင်းစီ အကောင်အထည်ပေါ်လာပါစေ။<br />
               Happy Birthday, my love. 🎂❤️
             </p>
-            <button type="button" className="wish-button" onClick={() => setPhase('ready')}>
-              Make another wish ✨
-            </button>
+            <p className="wish-instruction">
+              ဒီမွေးနေ့အတွက် ဆုတောင်းတစ်ခုပဲနော် 💫 Your wish is safely kept. ❤️
+            </p>
           </>
         )}
       </div>

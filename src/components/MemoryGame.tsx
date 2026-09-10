@@ -4,6 +4,18 @@ import { createPortal } from 'react-dom'
 type Card = { id: number; value: string }
 const symbols = ['❤️', '🌷', '🐻', '🍓', '🎂', '✨']
 
+const prizes = [
+  'Unlimited hugs & kisses from me 💕',
+  'One special date of your choice 🍽️❤️',
+  'Your favorite meal or snack — on me 🍓',
+  'One movie night where you choose everything 🎬✨',
+  'One surprise gift from ကိုကို 🎁❤️',
+]
+
+function pickRandomPrize() {
+  return prizes[Math.floor(Math.random() * prizes.length)]
+}
+
 function makeDeck(): Card[] {
   return [...symbols, ...symbols]
     .map((value, id) => ({ value, id }))
@@ -16,6 +28,7 @@ export default function MemoryGame() {
   const [matched, setMatched] = useState<string[]>([])
   const [moves, setMoves] = useState(0)
   const [showWinPopup, setShowWinPopup] = useState(false)
+  const [selectedPrize, setSelectedPrize] = useState<string | null>(null)
   const locked = flipped.length === 2
   const won = matched.length === symbols.length
   const sparkle = useMemo(() => Array.from({ length: 12 }, (_, i) => i), [])
@@ -37,8 +50,11 @@ export default function MemoryGame() {
   }, [flipped, deck])
 
   useEffect(() => {
-    if (won) setShowWinPopup(true)
-  }, [won])
+    if (!won || selectedPrize !== null) return
+
+    setSelectedPrize(pickRandomPrize())
+    setShowWinPopup(true)
+  }, [won, selectedPrize])
 
   useEffect(() => {
     if (!showWinPopup) return
@@ -70,6 +86,7 @@ export default function MemoryGame() {
     setMatched([])
     setMoves(0)
     setShowWinPopup(false)
+    setSelectedPrize(null)
   }
 
   const winnerPopup = showWinPopup
@@ -109,8 +126,8 @@ export default function MemoryGame() {
 
             <div className="win-popup-prize">
               <span>🎁 Your prize</span>
-              <strong>Unlimited hugs & kisses from me</strong>
-              <small>Non-refundable. No expiration date. Valid forever. 💕</small>
+              <strong>{selectedPrize ?? 'A surprise from me ❤️'}</strong>
+              <small>Randomly chosen from 5 special prizes ✨</small>
             </div>
 
             <div className="win-popup-actions">
