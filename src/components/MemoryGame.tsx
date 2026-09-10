@@ -5,8 +5,8 @@ type Card = { id: number; value: string }
 const symbols = ['❤️', '🌷', '🐻', '🍓', '🎂', '✨']
 
 const prizes = [
-  'Unlimited hugs & kisses from me 💕',
-  'အထူးအခွင့်အရေး ခိုင်းချင်တာခိုင်း 🍽️❤️',
+  'Unlimited hugs & kisses from koko (ပြန်လဲလို့မရ, ကုန်ဆုံးရက် မရှိ 😌) 💕',
+  '😮အထူးဆုကြီး!😮 (ကြိုက်တာနဲ့လာလဲလို့ရတယ်နော်၊ ပိုက်ဆံကလွဲလို့ 🤓) SS ရိုက်ပြီးလာပြ',
   'ကဲကဲ screenshot ရိုက်ပြီး ကို့စီ မုန့်ဖိုးလာထုတ်ပါ 💰',
 ]
 
