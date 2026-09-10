@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="hero-photo-wrap">
         <div className="hero-sparkle s1">✦</div>
         <div className="hero-sparkle s2">♡</div>
-        <img className="hero-photo" src="public/photos/20260910_171058.jpg" alt="Ko Ko's Ka Lay Lay Photo" />
+        <img className="hero-photo" src="/photos/20260910_171058.jpg" alt="Ko Ko's Ka Lay Lay Photo" />
         <div className="photo-note">ချစ်ရသော ကလေးလေး ♡</div>
       </div>
     </section>

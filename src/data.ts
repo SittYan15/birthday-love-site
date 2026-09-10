@@ -15,19 +15,19 @@ export const loveReasons = [
 ]
 
 export const timeline = [
-  { date: 'The Beginning', title: 'The Day We Met', text: 'ပထမဆုံး လည်လည်ထွတ်ခဲ့တုန်း အချိန်လေးပေါ့', image: 'public/photos/firstmeet.jpg' },
-  { date: 'A Favorite Day', title: 'Our First Special Memory', text: 'မထင်ထားပဲ ရုတ်တရက်ကြီး ကညင်ဆည် သွားခဲ့တဲ့နေ့လေးပေါ့', image: 'public/photos/firsttrip.jpeg' },
-  { date: 'Us Being Us', title: 'A Random Happy Day', text: 'အတူတူ လည်လည်ထွတ်တဲ့နေ့ရက်တွေကတော့ မေ့မပျောက်နိုင်တဲ့ နေ့ရက်တွေပဲပေါ့', image: 'public/photos/bp-2.png' },
+  { date: 'The Beginning', title: 'The Day We Met', text: 'ပထမဆုံး လည်လည်ထွတ်ခဲ့တုန်း အချိန်လေးပေါ့', image: '/photos/firstmeet.jpg' },
+  { date: 'A Favorite Day', title: 'Our First Special Memory', text: 'မထင်ထားပဲ ရုတ်တရက်ကြီး ကညင်ဆည် သွားခဲ့တဲ့နေ့လေးပေါ့', image: '/photos/firsttrip.jpeg' },
+  { date: 'Us Being Us', title: 'A Random Happy Day', text: 'အတူတူ လည်လည်ထွတ်တဲ့နေ့ရက်တွေကတော့ မေ့မပျောက်နိုင်တဲ့ နေ့ရက်တွေပဲပေါ့', image: '/photos/bp-2.png' },
   { date: '11 Sep 2026', title: 'Chit\'s Birthday', text: 'Another chapter, another memory, and hopefully many more with you.', image: '/photos/memory-4.svg' },
 ]
 
 export const gallery = [
-  { src: 'public/photos/p-1.jpg', caption: 'One of my favorite memories ❤️' },
+  { src: '/photos/p-1.jpg', caption: 'One of my favorite memories ❤️' },
   { src: '/photos/photo-2.svg', caption: 'You looked so happy here.' },
-  { src: 'public/photos/VID_20260228_193307_642.mp4', caption: '  ကို့ရဲ့ တစ်ဦးတည်းသော tiktoker လေးပေါ့' },
-  { src: 'public/photos/20260910_174009.jpg', caption: 'ငယ်ငယ်တုန်းက ချစ်ဖို့ကောင်းသလောက် ကြီးလာမှ ဝလာတာ 😁' },
-  { src: 'public/photos/IMG_20241117_211743_432.jpg', caption: 'နန်းဆန်နေသူလေးပေါ့ 😍' },
-  { src: 'public/photos/bp-0.jpg', caption: 'နေရာတကာ ဆရာလုပ်ချင်တဲ့ ဆရာမလေးပေါ့ 😍' },
+  { src: '/photos/VID_20260228_193307_642.mp4', caption: '  ကို့ရဲ့ တစ်ဦးတည်းသော tiktoker လေးပေါ့' },
+  { src: '/photos/20260910_174009.jpg', caption: 'ငယ်ငယ်တုန်းက ချစ်ဖို့ကောင်းသလောက် ကြီးလာမှ ဝလာတာ 😁' },
+  { src: '/photos/IMG_20241117_211743_432.jpg', caption: 'နန်းဆန်နေသူလေးပေါ့ 😍' },
+  { src: '/photos/bp-0.jpg', caption: 'နေရာတကာ ဆရာလုပ်ချင်တဲ့ ဆရာမလေးပေါ့ 😍' },
 ]
 
 export const letters = [
