@@ -6,7 +6,6 @@ export default function Timeline() {
       <div className="section-heading">
         <span className="eyebrow">How we got here</span>
         <h2>Our little timeline</h2>
-        <p>Some moments deserve their own place on the internet.</p>
       </div>
       <div className="timeline">
         {timeline.map((item, index) => (
